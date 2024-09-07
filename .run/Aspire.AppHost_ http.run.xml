@@ -12,7 +12,7 @@
       <env name="DOTNET_LAUNCH_PROFILE" value="http" />
     </envs>
     <option name="TRACK_URL" value="1" />
-    <browser url="http://localhost:15070/login?t=4d43e8e9-e830-40ab-ba36-c28cd37f72b0" start="true" />
+    <browser url="http://localhost:15070/login?t=909a8afe-e78b-4d32-8160-00a80456468c" start="true" />
     <method v="2">
       <option name="Build Solution" enabled="true" />
     </method>
