@@ -1,0 +1,49 @@
+@page "/student"
+@attribute [StreamRendering(true)]
+@attribute [OutputCache(Duration = 5)]
+
+@inject ApiServiceClient ApiServiceService
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data loaded from a backend API service.</p>
+
+@if (students == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in students)
+        {
+            <tr>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Birthday</td>
+                <td>@student.Email</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Student[]? students;
+
+    protected override async Task OnInitializedAsync()
+    {
+        students = await ApiServiceService.GetStudentsAsync();
+    }
+}

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>9e025bd1-46f3-4c30-acbe-00ac2634586d</UserSecretsId>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Aspire.ApiService\Aspire.ApiService.csproj" />
+    <ProjectReference Include="..\Aspire.MigrationService\Aspire.MigrationService.csproj" />
+    <ProjectReference Include="..\Aspire.Web\Aspire.Web.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <SkipAddAspireDefaultReferences>true</SkipAddAspireDefaultReferences>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(RuntimeIdentifier.StartsWith('Windows'))">
+    <PackageReference Include="Aspire.Dashboard.Sdk.win-x64" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Orchestration.win-x64" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+    <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="8.2.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.0" />
+  </ItemGroup>
+
+</Project>
